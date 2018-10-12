@@ -198,18 +198,12 @@ function phoneProblem(phoneNumber) {
  */
 function smilesProblem(text) {
     checkIsString(text);
-    const firstSmiles = text.match(/\(-:(?!-\))/gm);
-    const secondSmiles = text.match(/(?!\(-):-\)/gm);
-
-    let smiles = 0;
-    if (firstSmiles !== null) {
-        smiles += firstSmiles.length;
-    }
-    if (secondSmiles !== null) {
-        smiles += secondSmiles.length;
+    const smiles = text.match(/\(-:|:-\)/g);
+    if (smiles === null) {
+        return 0;
     }
 
-    return smiles;
+    return smiles.length;
 }
 
 /**
